@@ -4,17 +4,15 @@ import os
 import argparse
 from functools import reduce
 
+# await 
 
 FILE_EXT = '.gz'
-CHUNK_SIZE = 64
+CHUNK_SIZE = 1024
 BIT_TO_SEARCH = 1
 
 parser = argparse.ArgumentParser()
-parser.add_argument('folders', nargs='*')
+parser.add_argument('folders', nargs='+', help='List of absolute paths to folders divided by space')
 args = parser.parse_args()
-
-if not args.folders:
-    raise Exception('No folders found')
 
 # iterate through folders and *.gz files
 def get_files_from_folder():

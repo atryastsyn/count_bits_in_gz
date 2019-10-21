@@ -1,18 +1,22 @@
 import random
 import gzip
 import os
+import argparse
 
 
-FILE_LENGTH = 32
-ZEROES_PROBABLITY = 95
+FILE_LENGTH = 2048
+ZEROES_PROBABLITY = 99
 FOLDER_TEMPLATE = 'storage_{}'
-FOLDER_COUNT = 2
+FOLDER_COUNT = 8
 FILE_TEMPLATE = 'zeroes_and_ones_{}.gz'
-FILE_COUNT = 2
+FILE_COUNT = 32
 
+parser = argparse.ArgumentParser()
+parser.add_argument('base_folder', help='Absolute path to base folder where folders and gzipped files will be created')
+args = parser.parse_args()
 
 for i in range(FOLDER_COUNT):
-    folder_path = os.path.join(os.getcwd(), FOLDER_TEMPLATE.format(str(i)))
+    folder_path = os.path.join(args.base_folder, FOLDER_TEMPLATE.format(str(i)))
     if not os.path.exists(folder_path):
         # create folder
         os.mkdir(folder_path)
