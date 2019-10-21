@@ -3,11 +3,11 @@ import gzip
 import os
 
 
-FILE_LENGTH = 2048
-ZEROES_PROBABLITY = 99
+FILE_LENGTH = 32
+ZEROES_PROBABLITY = 95
 FOLDER_PATH = os.path.join(os.getcwd(), 'storage')
 FILE_TEMPLATE = 'test{}.gz'
-FILE_COUNT = 24
+FILE_COUNT = 2
 
 
 if not os.path.exists(FOLDER_PATH):
