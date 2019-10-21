@@ -1,21 +1,33 @@
 import zlib
 import sys
 import os
+import argparse
 from functools import reduce
 
 
-FOLDER_PATH = os.path.join(os.getcwd(), 'storage')
 FILE_EXT = '.gz'
 CHUNK_SIZE = 64
 BIT_TO_SEARCH = 1
 
+parser = argparse.ArgumentParser()
+parser.add_argument('folders', nargs='*')
+args = parser.parse_args()
+
+if not args.folders:
+    raise Exception('No folders found')
+
+# iterate through given folders
+def get_folders():
+    for folder in args.folders:
+        yield folder
 
 # iterate through *.gz files in given folder
 def get_files_from_folder():
-    for entry in os.listdir(FOLDER_PATH):
-        path_to_entry = os.path.join(FOLDER_PATH, entry)
-        if os.path.isfile(path_to_entry) and entry.endswith(FILE_EXT):
-            yield(path_to_entry)
+    for path_to_folder in get_folders():
+        for entry in os.listdir(path_to_folder):
+            path_to_entry = os.path.join(path_to_folder, entry)
+            if os.path.isfile(path_to_entry) and entry.endswith(FILE_EXT):
+                yield(path_to_entry)
 
 # iterate through file chunk by chunk
 def get_file_content():
