@@ -1,6 +1,5 @@
 import random
 import gzip
-import sys
 
 FILE_LENGTH = 200
 ZEROES_PROBABLITY = 95

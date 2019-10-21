@@ -17,7 +17,9 @@ def read_generator(f, d):
             break
         yield list(d.decompress(buffer))
 
-bit_count = reduce(lambda x, y: x + y, map(lambda x: x.count(BIT_TO_SEARCH), read_generator(file_object, decompress_object)))
+bit_count = reduce(lambda acc, x: acc + x, 
+               map(lambda y: y.count(BIT_TO_SEARCH), 
+                   read_generator(file_object, decompress_object)), 0)
 
 print (bit_count)
 
