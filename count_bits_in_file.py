@@ -16,20 +16,15 @@ args = parser.parse_args()
 if not args.folders:
     raise Exception('No folders found')
 
-# iterate through given folders
-def get_folders():
-    for folder in args.folders:
-        yield folder
-
-# iterate through *.gz files in given folder
+# iterate through folders and *.gz files
 def get_files_from_folder():
-    for path_to_folder in get_folders():
+    for path_to_folder in (_ for _ in args.folders):
         for entry in os.listdir(path_to_folder):
             path_to_entry = os.path.join(path_to_folder, entry)
             if os.path.isfile(path_to_entry) and entry.endswith(FILE_EXT):
                 yield(path_to_entry)
 
-# iterate through file chunk by chunk
+# iterate through files and file content chunk by chunk
 def get_file_content():
     for path_to_file in get_files_from_folder():
         file_object = open(path_to_file, 'rb')
