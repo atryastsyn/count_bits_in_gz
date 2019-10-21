@@ -3,7 +3,6 @@ import gzip
 import os
 import argparse
 
-
 FILE_LENGTH = 2048
 ZEROES_PROBABLITY = 99
 FOLDER_TEMPLATE = 'storage_{}'

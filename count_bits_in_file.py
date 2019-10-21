@@ -4,8 +4,6 @@ import os
 import argparse
 from functools import reduce
 
-# await 
-
 FILE_EXT = '.gz'
 CHUNK_SIZE = 1024
 BIT_TO_SEARCH = 1
@@ -34,6 +32,7 @@ def get_file_content():
                break
             yield list(decompress_object.decompress(buffer))
 
+# iterate through chunks, and map/reduce
 bit_count = reduce(lambda acc, x: acc + x, map(lambda y: y.count(BIT_TO_SEARCH), get_file_content()), 0)    
 
 print('Found {} ones'.format(bit_count))
