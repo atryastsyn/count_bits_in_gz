@@ -1,14 +1,13 @@
 import zlib
-import sys
 import os
-import argparse
+from argparse import ArgumentParser
 from functools import reduce
 
 FILE_EXT = '.gz'
 CHUNK_SIZE = 1024
 BIT_TO_SEARCH = 1
 
-parser = argparse.ArgumentParser()
+parser = ArgumentParser()
 parser.add_argument('folders', nargs='+', help='List of absolute paths to folders divided by space')
 args = parser.parse_args()
 

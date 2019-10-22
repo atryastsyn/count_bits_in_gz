@@ -1,7 +1,7 @@
 import random
 import gzip
 import os
-import argparse
+from argparse import ArgumentParser
 
 FILE_LENGTH = 2048
 ZEROES_PROBABLITY = 99
@@ -10,7 +10,7 @@ FOLDER_COUNT = 8
 FILE_TEMPLATE = 'zeroes_and_ones_{}.gz'
 FILE_COUNT = 32
 
-parser = argparse.ArgumentParser()
+parser = ArgumentParser()
 parser.add_argument('base_folder', help='Absolute path to base folder where folders and gzipped files will be created')
 args = parser.parse_args()
 
